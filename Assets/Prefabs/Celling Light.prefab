@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8626018409713275042}
   - component: {fileID: 3590903046133513684}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Light Buld 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 3397650368717324143}
   - component: {fileID: 8491084755758534787}
   m_Layer: 0
-  m_Name: Area Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 2701786111965828519}
   - component: {fileID: 2392228892069387984}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Light Buld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 593268120206780725}
   - component: {fileID: 8307143730037264474}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
