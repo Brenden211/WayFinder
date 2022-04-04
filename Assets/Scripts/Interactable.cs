@@ -6,5 +6,4 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public UnityEvent onInteract;
-
 }

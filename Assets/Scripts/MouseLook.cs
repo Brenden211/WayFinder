@@ -11,6 +11,7 @@ public class MouseLook : MonoBehaviour
 
     private void Start()
     {
+        xRotation -= 0f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -22,7 +23,7 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
 
         // Stops the camera from looking past these values
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); 
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);

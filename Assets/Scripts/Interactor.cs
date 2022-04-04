@@ -13,13 +13,13 @@ public class Interactor : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2, interactableMask))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 6, interactableMask))
         {
             if (hit.collider.GetComponent<Interactable>() != false)
             {
                 onInteract = hit.collider.GetComponent<Interactable>().onInteract;
 
-                if (Input.GetButtonDown("Flashlight"))
+                if (Input.GetKeyDown("e"))
                 {
                     Debug.Log("Interact!");
                     onInteract.Invoke();
