@@ -9,6 +9,13 @@ public class Interactor : MonoBehaviour
 
     public GameObject interactCanvas;
     public LayerMask interactableMask;
+    public GameObject playerFlashLight;
+
+    private void Start()
+    {
+        playerFlashLight.SetActive(false);
+        interactCanvas.SetActive(false);
+    }
 
     void Update()
     {
@@ -24,11 +31,15 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e"))
                 {
-                    Debug.Log("Interact!");
+                    playerFlashLight.SetActive(true);
                     onInteract.Invoke();
-                    interactCanvas.SetActive(false);
                 }
+
             }
+        }
+        else if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2, interactableMask))
+        {
+            interactCanvas.SetActive(false);
         }
     }
 }
