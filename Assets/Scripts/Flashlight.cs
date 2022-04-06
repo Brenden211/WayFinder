@@ -21,6 +21,7 @@ public class Flashlight : MonoBehaviour
         }
         else if (Input.GetKeyDown("f") && flashlightActive == true)
         {
+            FindObjectOfType<AudioManager>().Play("Flashlight Toggle");
             flashlightActive = false;
             SpotLight.SetActive(false);
         }
@@ -28,6 +29,7 @@ public class Flashlight : MonoBehaviour
 
     void ActivateFlashlight()
     {
+        FindObjectOfType<AudioManager>().Play("Flashlight Toggle");
         flashlightActive = true;
         SpotLight.SetActive(true);
     }

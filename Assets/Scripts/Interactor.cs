@@ -75,6 +75,7 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e") && hasFlashlight == false)
                 {
+                    FindObjectOfType<AudioManager>().Play("Pickup Key");
                     hasFlashlight = true;
                     playerFlashLight.SetActive(true);
                     interactText.SetActive(false);
@@ -109,6 +110,7 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e") && hasStartingKey == true)
                 {
+                    FindObjectOfType<AudioManager>().Play("Pickup Key");
                     hasStartingKey = false;
                     doorOpen = true;
                     interactText.SetActive(false);
@@ -132,6 +134,7 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e") && hasKey1 == true)
                 {
+                    FindObjectOfType<AudioManager>().Play("Pickup Key");
                     hasKey1 = false;
                     door1Open = true;
                     interactText.SetActive(false);
@@ -155,6 +158,7 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e") && hasKey2 == true)
                 {
+                    FindObjectOfType<AudioManager>().Play("Pickup Key");
                     hasKey2 = false;
                     door2Open = true;
                     interactText.SetActive(false);
@@ -178,6 +182,7 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e"))
                 {
+                    FindObjectOfType<AudioManager>().Play("Pickup Key");
                     hasKey1 = true;
                     key1.SetActive(true);
                     interactText.SetActive(false);
@@ -195,6 +200,7 @@ public class Interactor : MonoBehaviour
 
                 if (Input.GetKeyDown("e"))
                 {
+                    FindObjectOfType<AudioManager>().Play("Pickup Key");
                     hasKey2 = true;
                     key2.SetActive(true);
                     interactText.SetActive(false);

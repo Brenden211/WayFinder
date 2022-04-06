@@ -11,11 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 10f;
 
     public Transform groundCheck;
+    public GameObject endGameUI;
     public float groundDistance = 0.5f;
     public LayerMask groundMask;
 
     Vector3 velocity;
     bool isGrounded;
+    public bool gameEnded;
 
     private void Update()
     {
@@ -42,5 +44,16 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("EndGame"))
+        {
+            endGameUI.SetActive(true);
+            Time.timeScale = 0f;
+            gameEnded = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

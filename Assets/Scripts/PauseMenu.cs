@@ -9,10 +9,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    public PlayerMovement playerScript;
+
     void Update()
     {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown("escape") && playerScript.gameEnded == false)
         {
+            Cursor.lockState = CursorLockMode.None;
 
             if (isPaused)
             {
@@ -23,10 +26,15 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        else
+        {
+            return;
+        }
     }
 
     void Resume()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
