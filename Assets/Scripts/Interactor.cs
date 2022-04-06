@@ -13,7 +13,9 @@ public class Interactor : MonoBehaviour
     public LayerMask startingKeyMask;
     public LayerMask doorMask;
     public LayerMask key1Mask;
+    public LayerMask key2Mask;
     public LayerMask door1Mask;
+    public LayerMask door2Mask;
 
     public GameObject interactText;
     public GameObject playerFlashLight;
@@ -22,15 +24,20 @@ public class Interactor : MonoBehaviour
     public GameObject startingKeyModel;
     public GameObject noKeyMessage;
     public GameObject key1Model;
+    public GameObject key2Model;
     public GameObject key1;
+    public GameObject key2;
 
     public Animator doorAnimator;
     public Animator door1Animator;
+    public Animator door2Animator;
 
     public bool hasStartingKey;
     public bool doorOpen;
     public bool hasKey1;
+    public bool hasKey2;
     public bool door1Open;
+    public bool door2Open;
     public bool hasFlashlight;
 
     private void Start()
@@ -42,12 +49,15 @@ public class Interactor : MonoBehaviour
         startingKeyModel.SetActive(true);
         noKeyMessage.SetActive(false);
         key1.SetActive(false);
+        key2.SetActive(false);
         key1Model.SetActive(true);
 
         hasStartingKey = false;
         doorOpen = false;
         hasKey1 = false;
+        hasKey2 = false;
         door1Open = false;
+        door2Open = false;
         hasFlashlight = false;
     }
 
@@ -136,6 +146,29 @@ public class Interactor : MonoBehaviour
                 }
             }
         }
+        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5, door2Mask))
+        {
+            if (hit.collider.GetComponent<Interactable>() != false && door2Open == false)
+            {
+                interactText.SetActive(true);
+                onInteract = hit.collider.GetComponent<Interactable>().onInteract;
+
+                if (Input.GetKeyDown("e") && hasKey2 == true)
+                {
+                    hasKey2 = false;
+                    door2Open = true;
+                    interactText.SetActive(false);
+                    door2Animator.SetBool("Door2Open", true);
+                    key2.SetActive(false);
+                    onInteract.Invoke();
+                }
+                else if (Input.GetKeyDown("e") && hasKey2 == false)
+                {
+                    noKeyMessage.SetActive(true);
+                    onInteract.Invoke();
+                }
+            }
+        }
         else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5, key1Mask))
         {
             if (hit.collider.GetComponent<Interactable>() != false)
@@ -149,6 +182,23 @@ public class Interactor : MonoBehaviour
                     key1.SetActive(true);
                     interactText.SetActive(false);
                     key1Model.SetActive(false);
+                    onInteract.Invoke();
+                }
+            }
+        }
+        else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5, key2Mask))
+        {
+            if (hit.collider.GetComponent<Interactable>() != false)
+            {
+                interactText.SetActive(true);
+                onInteract = hit.collider.GetComponent<Interactable>().onInteract;
+
+                if (Input.GetKeyDown("e"))
+                {
+                    hasKey2 = true;
+                    key2.SetActive(true);
+                    interactText.SetActive(false);
+                    key2Model.SetActive(false);
                     onInteract.Invoke();
                 }
             }

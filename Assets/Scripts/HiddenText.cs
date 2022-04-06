@@ -33,6 +33,7 @@ public class HiddenText : MonoBehaviour
             if (hit.collider.GetComponent<HiddenText>() != false && flashlight.flashlightActive == true)
             {
                 RevealText();
+
             }
         }
     }
