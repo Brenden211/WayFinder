@@ -8,7 +8,6 @@ public class MouseLook : MonoBehaviour
 
     float xRotation = 0f;
 
-
     private void Start()
     {
         xRotation -= 0f;
