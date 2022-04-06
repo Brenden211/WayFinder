@@ -10,9 +10,11 @@ public class HiddenText : MonoBehaviour
     public LayerMask hiddenTextMask;
     public Flashlight flashlight;
     public Color _color;
+    public GameObject startingKey;
 
     void Start()
     {
+        startingKey.SetActive(false);
         _color = GetComponent<Text>().color;
         GetComponent<Text>().color = _color;
         isHidden = true;
@@ -22,6 +24,7 @@ public class HiddenText : MonoBehaviour
 
     void Update()
     {
+
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, hiddenTextMask))
@@ -37,8 +40,13 @@ public class HiddenText : MonoBehaviour
     void RevealText()
     {
         GetComponent<Text>().color = _color;
-
-
         _color.a = 1f;
+        isHidden = false;
+        SpawnKey();
+    }
+
+    void SpawnKey()
+    {
+        startingKey.SetActive(true);
     }
 }
